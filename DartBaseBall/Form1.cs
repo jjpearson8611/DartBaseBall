@@ -1,4 +1,6 @@
-﻿using System;
+﻿///This program is used for dart baseball I hope i am playing this game correctly
+/// This is not complete yet there are a few bugs that I need to find time too work out
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +14,7 @@ namespace DartBaseBall
 {
     public partial class Form1 : Form
     {
-
+        
         private int NumberOfBalls = 0;
         private int NumberOfStrikes = 0;
         private int NumberOfOuts = 0;
