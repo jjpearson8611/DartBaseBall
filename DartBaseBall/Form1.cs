@@ -38,7 +38,8 @@ namespace DartBaseBall
         }
         private void StrikeButton_Click(object sender, EventArgs e)
         {
-            CanYouKeepPlaying(NumberOfOuts);
+            if (CanYouKeepPlaying(NumberOfOuts))
+            {
                 if (NumberOfStrikes < 2)
                 {
                     NumberOfStrikes++;
@@ -50,9 +51,9 @@ namespace DartBaseBall
                     NumberOfOuts++;
                     ClearStrikesAndBalls();
                     UpdateScoreBoard();
-                    
                 }
-            
+            }
+            CanYouKeepPlaying(NumberOfOuts);
         }
         private void AddPoint()
         {
@@ -124,10 +125,22 @@ namespace DartBaseBall
             }
 
         }
-        private void CanYouKeepPlaying(int outs)
+        private bool CanYouKeepPlaying(int outs)
         {
+            bool returnMe = true;
             if (outs >= 3)
             {
+                returnMe = false;
+                NumberOfOuts = 0;
+
+                UpdateScoreBoard();
+
+                SwitchBatterPointer();
+
+                ThirdBase.FillColor = Color.White;
+                SecondBase.FillColor = Color.White;
+                FirstBase.FillColor = Color.White;
+
                 if (WhoIsBatting == 1)
                 {
                     WhoIsBatting++;
@@ -137,6 +150,7 @@ namespace DartBaseBall
                     WhoIsBatting = 1;
                     if (InningNumber < 9)
                     {
+                        MoveInningPointer();
                         InningNumber++;
                     }
                     else
@@ -157,6 +171,8 @@ namespace DartBaseBall
                     }
                 }
             }
+
+            return returnMe;
         }
         private void UpdateScoreBoard()
         {
@@ -172,7 +188,8 @@ namespace DartBaseBall
 
         private void BallButton_Click(object sender, EventArgs e)
         {
-            CanYouKeepPlaying(NumberOfOuts);
+            if (CanYouKeepPlaying(NumberOfOuts))
+            {
                 if (NumberOfBalls < 3)
                 {
                     NumberOfBalls++;
@@ -190,16 +207,16 @@ namespace DartBaseBall
                     {
                         switch (BasesOccupied())
                         {
-                            case(10):
+                            case (10):
                                 FirstBase.FillColor = Color.Green;
                                 break;
-                            case(100):
+                            case (100):
                                 FirstBase.FillColor = Color.Green;
                                 break;
-                            case(101):
+                            case (101):
                                 SecondBase.FillColor = Color.Green;
                                 break;
-                            case(110):
+                            case (110):
                                 FirstBase.FillColor = Color.Green;
                                 break;
 
@@ -207,18 +224,18 @@ namespace DartBaseBall
                     }
                     UpdateScoreBoard();
                 }
-
-            
+            }
         }
 
         private void OutButton_Click(object sender, EventArgs e)
         {
-            CanYouKeepPlaying(NumberOfOuts);
+            if (CanYouKeepPlaying(NumberOfOuts))
+            {
                 NumberOfOuts++;
                 UpdateScoreBoard();
-                //TODO switch sides if over 3 outs
-            
-            ClearStrikesAndBalls();
+                ClearStrikesAndBalls();
+            }
+            CanYouKeepPlaying(NumberOfOuts);
         }
         private void ClearStrikesAndBalls()
         {
@@ -229,41 +246,44 @@ namespace DartBaseBall
 
         private void SingleButton_Click(object sender, EventArgs e)
         {
-            switch (BasesOccupied())
+            if (CanYouKeepPlaying(NumberOfOuts))
             {
-                case(0):
-                    FirstBase.FillColor = Color.Green;
-                    break;
-                case(1):
-                    SecondBase.FillColor = Color.Green;
-                    break;
-                case(10):
-                    ThirdBase.FillColor = Color.Green;
-                    SecondBase.FillColor = Color.White;
-                    FirstBase.FillColor = Color.Green;
-                    break;
-                case(100):
-                    ThirdBase.FillColor = Color.White;
-                    AddPoint();
-                    break;
-                case(11):
-                    ThirdBase.FillColor = Color.Green;
-                    break;
-                case(101):
-                    ThirdBase.FillColor = Color.White;
-                    SecondBase.FillColor = Color.Green;
-                    AddPoint();
-                    break;
-                case(110):
-                    SecondBase.FillColor = Color.White;
-                    FirstBase.FillColor = Color.Green;
-                    AddPoint();
-                    break;
-                case(111):
-                    AddPoint();
-                    break;
+                switch (BasesOccupied())
+                {
+                    case (0):
+                        FirstBase.FillColor = Color.Green;
+                        break;
+                    case (1):
+                        SecondBase.FillColor = Color.Green;
+                        break;
+                    case (10):
+                        ThirdBase.FillColor = Color.Green;
+                        SecondBase.FillColor = Color.White;
+                        FirstBase.FillColor = Color.Green;
+                        break;
+                    case (100):
+                        ThirdBase.FillColor = Color.White;
+                        AddPoint();
+                        break;
+                    case (11):
+                        ThirdBase.FillColor = Color.Green;
+                        break;
+                    case (101):
+                        ThirdBase.FillColor = Color.White;
+                        SecondBase.FillColor = Color.Green;
+                        AddPoint();
+                        break;
+                    case (110):
+                        SecondBase.FillColor = Color.White;
+                        FirstBase.FillColor = Color.Green;
+                        AddPoint();
+                        break;
+                    case (111):
+                        AddPoint();
+                        break;
+                }
+                ClearStrikesAndBalls();
             }
-            ClearStrikesAndBalls();
         }
 
         private int BasesOccupied()
@@ -295,6 +315,97 @@ namespace DartBaseBall
 
         }
 
+        private void SwitchBatterPointer()
+        {
+            if (TeamOnePointerLabel.Visible)
+            {
+                TeamOnePointerLabel.Visible = false;
+                TeamTwoPointerLabel.Visible = true;
+            }
+            else
+            {
+                TeamOnePointerLabel.Visible = true;
+                TeamTwoPointerLabel.Visible = false;
+            }
+        }
+
+        private void MoveInningPointer()
+        {
+            if (Inning1.Visible)
+            {
+                Inning1.Visible = false;
+                Inning2.Visible = true;
+            }
+            else
+            {
+                if (Inning2.Visible)
+                {
+                    Inning2.Visible = false;
+                    Inning3.Visible = true;
+                }
+                else
+                {
+                    if (Inning3.Visible)
+                    {
+                        Inning3.Visible = false;
+                        Inning4.Visible = true;
+                    }
+                    else
+                    {
+                        if (Inning4.Visible)
+                        {
+                            Inning4.Visible = false;
+                            Inning5.Visible = true;
+                        }
+                        else
+                        {
+                            if (Inning5.Visible)
+                            {
+                                Inning5.Visible = false;
+                                Inning6.Visible = true;
+                            }
+                            else
+                            {
+                                if (Inning6.Visible)
+                                {
+                                    Inning6.Visible = false;
+                                    Inning7.Visible = true;
+                                }
+                                else
+                                {
+                                    if (Inning7.Visible)
+                                    {
+                                        Inning7.Visible = false;
+                                        Inning8.Visible = true;
+                                    }
+                                    else
+                                    {
+                                        if (Inning8.Visible)
+                                        {
+                                            Inning8.Visible = false;
+                                            Inning9.Visible = true;
+                                        }
+                                        else
+                                        {
+                                            Inning1.Visible = true;
+                                            Inning2.Visible = true;
+                                            Inning3.Visible = true;
+                                            Inning4.Visible = true;
+                                            Inning5.Visible = true;
+                                            Inning6.Visible = true;
+                                            Inning7.Visible = true;
+                                            Inning8.Visible = true;
+                                            Inning9.Visible = true;
+                                        }
+                                    
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         private void DoubleButton_Click(object sender, EventArgs e)
         {
 
@@ -343,29 +454,38 @@ namespace DartBaseBall
 
         private void FoulButton_Click(object sender, EventArgs e)
         {
-            CanYouKeepPlaying(NumberOfOuts);
-            
-                if(NumberOfStrikes < 2)
+            if (CanYouKeepPlaying(NumberOfOuts))
+            {
+
+                if (NumberOfStrikes < 2)
                 {
                     NumberOfStrikes++;
                     UpdateScoreBoard();
                 }
-            
+            }
         }
 
         private void SacrificeButton_Click(object sender, EventArgs e)
         {
             ClearStrikesAndBalls();
-            SingleButton_Click(sender, e);
-            FirstBase.FillColor = Color.White;
-            NumberOfOuts++;
-            UpdateScoreBoard();
+            if (FirstBase.FillColor == Color.Green || SecondBase.FillColor == Color.Green || ThirdBase.FillColor == Color.Green)
+            {
+                SingleButton_Click(sender, e);
+                FirstBase.FillColor = Color.White;
+                NumberOfOuts++;
+                UpdateScoreBoard();
+            }
         }
 
         private void SafeHitButton_Click(object sender, EventArgs e)
         {
             NumberOfBalls = 324234;
             BallButton_Click(sender, e);
+        }
+
+        private void T2I4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -69,6 +69,17 @@
             this.T1Total = new System.Windows.Forms.Label();
             this.T2I9 = new System.Windows.Forms.Label();
             this.T1I9 = new System.Windows.Forms.Label();
+            this.Inning1 = new System.Windows.Forms.Label();
+            this.Inning9 = new System.Windows.Forms.Label();
+            this.Inning7 = new System.Windows.Forms.Label();
+            this.Inning6 = new System.Windows.Forms.Label();
+            this.Inning5 = new System.Windows.Forms.Label();
+            this.Inning3 = new System.Windows.Forms.Label();
+            this.Inning4 = new System.Windows.Forms.Label();
+            this.Inning8 = new System.Windows.Forms.Label();
+            this.Inning2 = new System.Windows.Forms.Label();
+            this.TeamOnePointerLabel = new System.Windows.Forms.Label();
+            this.TeamTwoPointerLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SingleButton
@@ -93,6 +104,7 @@
             // 
             // TripleButton
             // 
+            this.TripleButton.ForeColor = System.Drawing.Color.Red;
             this.TripleButton.Location = new System.Drawing.Point(706, 530);
             this.TripleButton.Name = "TripleButton";
             this.TripleButton.Size = new System.Drawing.Size(75, 23);
@@ -102,6 +114,7 @@
             // 
             // HomerunButton
             // 
+            this.HomerunButton.ForeColor = System.Drawing.Color.Red;
             this.HomerunButton.Location = new System.Drawing.Point(706, 559);
             this.HomerunButton.Name = "HomerunButton";
             this.HomerunButton.Size = new System.Drawing.Size(75, 23);
@@ -253,6 +266,7 @@
             // 
             // DoublePlayButton
             // 
+            this.DoublePlayButton.ForeColor = System.Drawing.Color.Red;
             this.DoublePlayButton.Location = new System.Drawing.Point(625, 530);
             this.DoublePlayButton.Name = "DoublePlayButton";
             this.DoublePlayButton.Size = new System.Drawing.Size(75, 23);
@@ -262,6 +276,7 @@
             // 
             // StolenBaseButton
             // 
+            this.StolenBaseButton.ForeColor = System.Drawing.Color.Red;
             this.StolenBaseButton.Location = new System.Drawing.Point(625, 501);
             this.StolenBaseButton.Name = "StolenBaseButton";
             this.StolenBaseButton.Size = new System.Drawing.Size(75, 23);
@@ -333,6 +348,7 @@
             this.T2I4.Size = new System.Drawing.Size(30, 27);
             this.T2I4.TabIndex = 25;
             this.T2I4.Text = "0";
+            this.T2I4.Click += new System.EventHandler(this.T2I4_Click);
             // 
             // T1I4
             // 
@@ -497,11 +513,130 @@
             this.T1I9.TabIndex = 34;
             this.T1I9.Text = "0";
             // 
+            // Inning1
+            // 
+            this.Inning1.AutoSize = true;
+            this.Inning1.Location = new System.Drawing.Point(453, 307);
+            this.Inning1.Name = "Inning1";
+            this.Inning1.Size = new System.Drawing.Size(13, 13);
+            this.Inning1.TabIndex = 39;
+            this.Inning1.Text = "^";
+            // 
+            // Inning9
+            // 
+            this.Inning9.AutoSize = true;
+            this.Inning9.Location = new System.Drawing.Point(733, 307);
+            this.Inning9.Name = "Inning9";
+            this.Inning9.Size = new System.Drawing.Size(13, 13);
+            this.Inning9.TabIndex = 40;
+            this.Inning9.Text = "^";
+            this.Inning9.Visible = false;
+            // 
+            // Inning7
+            // 
+            this.Inning7.AutoSize = true;
+            this.Inning7.Location = new System.Drawing.Point(663, 307);
+            this.Inning7.Name = "Inning7";
+            this.Inning7.Size = new System.Drawing.Size(13, 13);
+            this.Inning7.TabIndex = 41;
+            this.Inning7.Text = "^";
+            this.Inning7.Visible = false;
+            // 
+            // Inning6
+            // 
+            this.Inning6.AutoSize = true;
+            this.Inning6.Location = new System.Drawing.Point(628, 307);
+            this.Inning6.Name = "Inning6";
+            this.Inning6.Size = new System.Drawing.Size(13, 13);
+            this.Inning6.TabIndex = 42;
+            this.Inning6.Text = "^";
+            this.Inning6.Visible = false;
+            // 
+            // Inning5
+            // 
+            this.Inning5.AutoSize = true;
+            this.Inning5.Location = new System.Drawing.Point(593, 307);
+            this.Inning5.Name = "Inning5";
+            this.Inning5.Size = new System.Drawing.Size(13, 13);
+            this.Inning5.TabIndex = 43;
+            this.Inning5.Text = "^";
+            this.Inning5.Visible = false;
+            // 
+            // Inning3
+            // 
+            this.Inning3.AutoSize = true;
+            this.Inning3.Location = new System.Drawing.Point(523, 307);
+            this.Inning3.Name = "Inning3";
+            this.Inning3.Size = new System.Drawing.Size(13, 13);
+            this.Inning3.TabIndex = 44;
+            this.Inning3.Text = "^";
+            this.Inning3.Visible = false;
+            // 
+            // Inning4
+            // 
+            this.Inning4.AutoSize = true;
+            this.Inning4.Location = new System.Drawing.Point(558, 307);
+            this.Inning4.Name = "Inning4";
+            this.Inning4.Size = new System.Drawing.Size(13, 13);
+            this.Inning4.TabIndex = 45;
+            this.Inning4.Text = "^";
+            this.Inning4.Visible = false;
+            // 
+            // Inning8
+            // 
+            this.Inning8.AutoSize = true;
+            this.Inning8.Location = new System.Drawing.Point(698, 307);
+            this.Inning8.Name = "Inning8";
+            this.Inning8.Size = new System.Drawing.Size(13, 13);
+            this.Inning8.TabIndex = 46;
+            this.Inning8.Text = "^";
+            this.Inning8.Visible = false;
+            // 
+            // Inning2
+            // 
+            this.Inning2.AutoSize = true;
+            this.Inning2.Location = new System.Drawing.Point(488, 307);
+            this.Inning2.Name = "Inning2";
+            this.Inning2.Size = new System.Drawing.Size(13, 13);
+            this.Inning2.TabIndex = 47;
+            this.Inning2.Text = "^";
+            this.Inning2.Visible = false;
+            // 
+            // TeamOnePointerLabel
+            // 
+            this.TeamOnePointerLabel.AutoSize = true;
+            this.TeamOnePointerLabel.Location = new System.Drawing.Point(416, 216);
+            this.TeamOnePointerLabel.Name = "TeamOnePointerLabel";
+            this.TeamOnePointerLabel.Size = new System.Drawing.Size(19, 13);
+            this.TeamOnePointerLabel.TabIndex = 48;
+            this.TeamOnePointerLabel.Text = "-->";
+            // 
+            // TeamTwoPointerLabel
+            // 
+            this.TeamTwoPointerLabel.AutoSize = true;
+            this.TeamTwoPointerLabel.Location = new System.Drawing.Point(416, 277);
+            this.TeamTwoPointerLabel.Name = "TeamTwoPointerLabel";
+            this.TeamTwoPointerLabel.Size = new System.Drawing.Size(19, 13);
+            this.TeamTwoPointerLabel.TabIndex = 49;
+            this.TeamTwoPointerLabel.Text = "-->";
+            this.TeamTwoPointerLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 594);
+            this.Controls.Add(this.TeamTwoPointerLabel);
+            this.Controls.Add(this.TeamOnePointerLabel);
+            this.Controls.Add(this.Inning2);
+            this.Controls.Add(this.Inning8);
+            this.Controls.Add(this.Inning4);
+            this.Controls.Add(this.Inning3);
+            this.Controls.Add(this.Inning5);
+            this.Controls.Add(this.Inning6);
+            this.Controls.Add(this.Inning7);
+            this.Controls.Add(this.Inning9);
+            this.Controls.Add(this.Inning1);
             this.Controls.Add(this.T2Total);
             this.Controls.Add(this.T1Total);
             this.Controls.Add(this.T2I9);
@@ -590,6 +725,17 @@
         private System.Windows.Forms.Label T1Total;
         private System.Windows.Forms.Label T2I9;
         private System.Windows.Forms.Label T1I9;
+        private System.Windows.Forms.Label Inning1;
+        private System.Windows.Forms.Label Inning9;
+        private System.Windows.Forms.Label Inning7;
+        private System.Windows.Forms.Label Inning6;
+        private System.Windows.Forms.Label Inning5;
+        private System.Windows.Forms.Label Inning3;
+        private System.Windows.Forms.Label Inning4;
+        private System.Windows.Forms.Label Inning8;
+        private System.Windows.Forms.Label Inning2;
+        private System.Windows.Forms.Label TeamOnePointerLabel;
+        private System.Windows.Forms.Label TeamTwoPointerLabel;
     }
 }
 
