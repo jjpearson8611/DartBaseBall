@@ -104,13 +104,14 @@
             // 
             // TripleButton
             // 
-            this.TripleButton.ForeColor = System.Drawing.Color.Red;
+            this.TripleButton.ForeColor = System.Drawing.Color.Black;
             this.TripleButton.Location = new System.Drawing.Point(706, 530);
             this.TripleButton.Name = "TripleButton";
             this.TripleButton.Size = new System.Drawing.Size(75, 23);
             this.TripleButton.TabIndex = 2;
             this.TripleButton.Text = "Triple";
             this.TripleButton.UseVisualStyleBackColor = true;
+            this.TripleButton.Click += new System.EventHandler(this.TripleButton_Click);
             // 
             // HomerunButton
             // 

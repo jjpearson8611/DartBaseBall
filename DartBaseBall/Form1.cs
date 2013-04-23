@@ -261,12 +261,13 @@ namespace DartBaseBall
                         SecondBase.FillColor = Color.White;
                         FirstBase.FillColor = Color.Green;
                         break;
-                    case (100):
-                        ThirdBase.FillColor = Color.White;
-                        AddPoint();
-                        break;
                     case (11):
                         ThirdBase.FillColor = Color.Green;
+                        break;
+                    case(100):
+                        ThirdBase.FillColor = Color.White;
+                        FirstBase.FillColor = Color.Green;
+                        AddPoint();
                         break;
                     case (101):
                         ThirdBase.FillColor = Color.White;
@@ -486,6 +487,54 @@ namespace DartBaseBall
         private void T2I4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void TripleButton_Click(object sender, EventArgs e)
+        {
+
+            switch (BasesOccupied())
+            {
+                case (0):
+                    ThirdBase.FillColor = Color.Green;
+                    break;
+                case (1):
+                    FirstBase.FillColor = Color.White;
+                    ThirdBase.FillColor = Color.Green;
+                    break;
+                case (10):
+                    AddPoint();
+                    ThirdBase.FillColor = Color.Green;
+                    SecondBase.FillColor = Color.White;
+                    break;
+                case (11):
+                    FirstBase.FillColor = Color.White;
+                    ThirdBase.FillColor = Color.Green;
+                    SecondBase.FillColor = Color.White;
+                    AddPoint();
+                    AddPoint();
+                    break;
+                case (100):
+                    AddPoint();
+                    break;
+                case (101):
+                    FirstBase.FillColor = Color.White;
+                    AddPoint();
+                    AddPoint();
+                    break;
+                case (110):
+                    SecondBase.FillColor = Color.White;
+                    AddPoint();
+                    AddPoint();
+                    break;
+                case (111):
+                    FirstBase.FillColor = Color.White;
+                    SecondBase.FillColor = Color.White;
+                    AddPoint();
+                    AddPoint();
+                    AddPoint();
+                    break;
+            }
+            ClearStrikesAndBalls();
         }
     }
 }
