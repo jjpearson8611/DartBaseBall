@@ -1,1 +1,1 @@
-This is the read me to contain more information as I go down the road
+Ok the red buttons do not work, however the other ones should work accordingly.
